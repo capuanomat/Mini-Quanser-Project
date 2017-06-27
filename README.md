@@ -1,5 +1,5 @@
 # Mini-Quanser-Project
-Trying to design a mini, 3 degree control system similar to the Quanser 3 DOF Helicopter model
+Trying to design a mini, 3 degrees-of-freedom control system similar to the Quanser 3 DOF Helicopter model
 
 ### TO DO:
 - Redesign and print CAD structure to test 1 degree of freedom: Pitch
