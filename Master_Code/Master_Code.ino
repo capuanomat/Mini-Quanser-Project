@@ -1,9 +1,11 @@
 #include <Wire.h>
 #include <MPU6050.h>
-
-// MATTHIEU: CURRENT WORKING CODE 25/06/17
+#include<Servo.h>
 
 MPU6050 mpu;
+
+/** Servo (ESC/Motor) variable **/
+Servo esc;
 
 /*working variables*/
 unsigned long lastTime;
@@ -23,6 +25,8 @@ char test[3];
 
 void setup() {
   Serial.begin(9600);
+  esc.attach(9);      //Servo is bound to pin 9
+  esc.write(1000);
   while(!mpu.begin(MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G))
   {
     Serial.println("Could not find a valid MPU6050 sensor, check wiring!");
@@ -75,10 +79,10 @@ void loop() {
     ITerm += (ki * error); 
     double dpitch = (pitch - lastpitch);
  
-    /*Compute PID ControlOut*/
+    /** Compute PID ControlOut **/
     ControlOut = kp * error + ITerm + kd * dpitch; 
  
-    /*Remember some variables for next time*/
+    /** Remember some variables for next time **/
     lastpitch = pitch;
     lastTime = now;
   }
@@ -93,6 +97,5 @@ void loop() {
   Serial.print("\t ControlOut = ");
   Serial.println(ControlOut);
   delay(4);
-
-
+  esc.write(desired*10);
 }
