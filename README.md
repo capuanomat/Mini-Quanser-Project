@@ -2,7 +2,7 @@
 Trying to design a mini, 3 degrees-of-freedom control system similar to the Quanser 3 DOF Helicopter model
 
 ### TO DO:
-- (29/06) Assemble printed parts and try basic testing with BE1306-3100KV motor
+- Hardware is mostly ok, need to read up on PID to see how I can make it stabilize at 0 degrees for longer (check video)
 
 ### DONE:
 - Convert Data from IMU into attitudes and angles
@@ -11,6 +11,9 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - Implement basic PID Control
 - Make three potentiometers vary the PID gains mapped between 0-1
 - (28/06) Redesign and print CAD structure to test 1 degree of freedom: Pitch
+- (29/06) Assemble printed parts and try basic testing with BE1306-3100KV motor
+- (30/06) Added IMU to frame, finalized connections, mapped controlOutput, managed to make it hold ~horizontal for a few seconds
+
 
 ## Needed Hardware Design Improvements (After 2.0)
 - Increase spacing between motor arm and ball bearing frame to let wires fit through without adding friction (or use counterweight arm)
