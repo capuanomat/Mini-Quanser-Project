@@ -20,8 +20,8 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 
 ## References
 - IMU Tutorial 1: https://diyhacking.com/arduino-mpu-6050-imu-sensor-tutorial/
-- MPU6050 * I2Cdev Libraries: https://github.com/jrowberg/i2cdevlib
+- MPU6050 & I2Cdev Libraries: https://github.com/jrowberg/i2cdevlib
 - IMU Tutorial 2 (with MATLAB): https://turnsouthat.wordpress.com/2015/07/31/arduino-mpu6050-getting-ready/
 - MATLAB IMU scanner: https://github.com/ezgode/Arduino_MPU6050
-- PID Library (Unused): https://github.com/br3ttb/Arduino-PID-Library
+- PID Library (unused): https://github.com/br3ttb/Arduino-PID-Library
 - Secondary MPU6050 Lib (in use): https://github.com/jarzebski/Arduino-MPU6050
