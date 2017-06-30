@@ -13,7 +13,8 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - (28/06) Redesign and print CAD structure to test 1 degree of freedom: Pitch
 
 ## Needed Hardware Design Improvements (After 2.0)
-- Increase spacing between motor arm and ball bearing frame to let wires fit through without adding friction
+- Increase spacing between motor arm and ball bearing frame to let wires fit through without adding friction (or use counterweight arm)
+- Include slit in motor arm to insert IMU
 - Include small hole/dent between screw holes on motor mount to fit middle masher and nail thing (what you soldered into 3D print)
 - Increase spacing between ball bearing mount arms to fit the motor arm more easily (adjust motor arm spacing as needed)
 - Design second motor mount for two motors to test roll
