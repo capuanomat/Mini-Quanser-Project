@@ -39,7 +39,7 @@ void loop() {
   Vector normAccel = mpu.readNormalizeAccel();
   
   // Calculate Pitch & Roll
-  int pitch = -(atan2(normAccel.XAxis, sqrt(normAccel.YAxis*normAccel.YAxis + normAccel.ZAxis*normAccel.ZAxis))*180.0)/M_PI;
+  int pitch = (atan2(normAccel.XAxis, sqrt(normAccel.YAxis*normAccel.YAxis + normAccel.ZAxis*normAccel.ZAxis)) * 180.0) / M_PI;
   //int roll = (atan2(normAccel.YAxis, normAccel.ZAxis)*180.0)/M_PI;
 
   
@@ -56,7 +56,7 @@ void loop() {
   desired = atoi(test);
   error  = desired - pitch;
 
-  /* Reading potentiometer values and casting them in a 0-10 range */
+  /** Reading potentiometer values and casting them in a 0-10 range **/
   kp = analogRead(A0);
   ki = analogRead(A1);
   kd = analogRead(A2);
@@ -69,10 +69,11 @@ void loop() {
   Serial.print(ki, 2);
   Serial.print(", D-gain: ");
   Serial.print(kd, 2);
-  
+
+  /** Reading the time since last reading **/
   unsigned long now = millis();
   int timeChange = (now - lastTime);
-   
+
   if(timeChange >= SampleTime){
     /*Compute all the working error variables*/
     double error = desired - pitch;
@@ -86,16 +87,20 @@ void loop() {
     lastpitch = pitch;
     lastTime = now;
   }
-  // ControlOut
+
+  /** -87 to 43 **/
+  ControlOut = map(ControlOut, -87, 43, 1000, 1370);
+  
+  /** Prints the following: current pitch, desired pitch, error in pitch, PID output before mapping **/  
   Serial.print("\t");
-  Serial.print(" Theta = ");
+  Serial.print(" Pitchc = ");
   Serial.print(pitch);
-  Serial.print(" Theta_d = ");
+  Serial.print(" Pitch_desired = ");
   Serial.print(desired);
   Serial.print(" Error = ");
   Serial.print(error);
   Serial.print("\t ControlOut = ");
   Serial.println(ControlOut);
   delay(4);
-  esc.write(desired*10);
+  esc.write(ControlOut);
 }
