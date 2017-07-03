@@ -2,31 +2,29 @@
 #include <MPU6050.h>
 #include <Servo.h>
 #include <Filters.h>
-MPU6050 mpu;
 
-/** Servo (ESC/Motor) variable **/
+
+/** Servo (ESC/Motor) variable and IMU variable **/
 Servo esc;
+MPU6050 mpu;
 
 /** Working variables **/
 unsigned long lastTime;
-double unfilteredPitch, pitch, desiredPitch, lastpitch, Mapped, Out;
+double unfilteredPitch, pitch, desiredPitch, lastPitch;
 double unfilteredRoll, roll;
 
-
-double val = - 20;        //To set the default angle to -20
-int SampleTime = 4;       //4 milli sec
-
+/** ADJUSTABLE: Setting a default pitch angle, sampling time in milliseconds, filter value, and  **/
+double defaultAngle = - 20;
+int SampleTime = 4;
 float filterVal = 0.85;
 
-/** filters out changes faster that number below (in Hz). **/
-float filterFrequency = 4.0;
-
-/** The PID gains and terms **/
+/** The PID gains and PID terms **/
 float kp, ki, kd;
 double PTerm, ITerm, DTerm, DTermUnfiltered;
 
-int errorPitch;
-char test[3];
+double sumPID, Out;
+double errorPitch;
+char readMonitor[3];  //CHECKON: changed this from "test" which was a keyword
 
 void setup() {
   Serial.begin(9600);
@@ -46,66 +44,63 @@ void loop() {
   if (millis() < 3000) {
     Out = 1100;
   } else {
-    /** Read normalized values from IMU **/
+    /** Read normalized values from IMU and caclulates pitch and roll from them**/
     Vector normAccel = mpu.readNormalizeAccel();
-  
-    /** Calculate pitch and roll from normalized values **/
     unfilteredPitch = (atan2(normAccel.XAxis, sqrt(normAccel.YAxis*normAccel.YAxis + normAccel.ZAxis*normAccel.ZAxis)) * 180.0) / M_PI;
     //int unfilteredRoll = (atan2(normAccel.YAxis, normAccel.ZAxis)*180.0)/M_PI;
-    
-    pitch =  smooth(unfilteredPitch, filterVal, pitch);   // second parameter determines smoothness  - 0 is off,  .9999 is max smooth 
+
+    /** Smoothens out the pitch (tried lowpass filter). Second parameter determines the smoothness: 0 is off, 0.9999 is max smoothness **/
+    pitch =  smooth(unfilteredPitch, filterVal, pitch);
+    //roll = smooth(unfilteredRoll, filterVal, roll); //May need separate filter values for pitch and roll
 
     /** Will read input angle from Serial Monitor **/
     int i = 0;
     while (Serial.available()) {
-     test[i++] = Serial.read();
+     readMonitor[i++] = Serial.read();
     }
-    
-    desiredPitch = atoi(test) + val;
-    errorPitch  = desiredPitch - pitch;
-  
-    /** Reading potentiometer values and casting them in a 0-10 range **/
-    kp = analogRead(A0);
-    ki = analogRead(A1);
-    kd = analogRead(A2);
-    kp = map(kp, 0, 1023, 0, 3000) / 100000.0;
-    ki = map(ki, 0, 1023, 0, 90) / 1000000.0;
-    kd = map(kd, 0, 1023, 0, 100000) / 1000000.0;
 
-    /** Reading the time since last reading **/
+    /** Compute desired pitch and adds val (-20) to give val default angle, then computes error in pitch **/
+    desiredPitch = atoi(test) + defaultAngle;
+    errorPitch  = desiredPitch - pitch;
+
+    /** TODO: Does same as above for roll but without default angle **/
+    // This will involve editing how values are read in so you can input both roll and pitch
+  
+    /** Reading the PID gains from potentiometers on Analog ports 0, 1, and 2. Casting them to reasonable ranges **/
+    kp = map(analogRead(A0), 0, 1023, 0, 3000)   / 100000.0;
+    ki = map(analogRead(A1), 0, 1023, 0, 90)     / 1000000.0;
+    kd = map(analogRead(A2), 0, 1023, 0, 100000) / 1000000.0;
+
+    /** Calculating the time since last reading **/
     unsigned long now = millis();
     int timeChange = (now - lastTime);
 
+    /** Computing the PID terms if timeChange is large enough **/
     if(timeChange >= SampleTime){
-      /*Compute all the working error variables*/
-      double errorPitch = desiredPitch - pitch;
-      ITerm += (ki * errorPitch); 
-      //Serial.print(" ITerm: ");
-      //Serial.println(ITerm);
-      
-      double dpitch = (pitch - lastpitch);
+      /** P and I **/
+      PTerm  = kp * errorPitch; // Proportional to instantaneous error in pitch
+      ITerm += ki * errorPitch; // Summed error in pitch over time
+
+      /** D **/
+      double dpitch = (pitch - lastPitch);
       DTermUnfiltered = kd * dpitch;
-      //Serial.print(" DTermUnfiltered: ");
-      //Serial.print(DTermUnfiltered, 3);
-      DTerm = smooth(DTermUnfiltered, 0.5, DTerm);
-      //Serial.print(" DTerm: ");
-      //Serial.println(DTerm, 3);
+      DTerm = smooth(DTermUnfiltered, 0.5, DTerm); // Instantaneous rate of change of pitch
       
-      /** Compute PID Mapped **/
-      Mapped = kp * errorPitch + ITerm + DTerm; 
+      /** Compute sum of P, I, and D terms **/
+      sumPID = PTerm + ITerm + DTerm; 
  
       /** Remember some variables for next time **/
-      lastpitch = pitch;
+      lastPitch = pitch;
       lastTime = now;
     }
 
     /** Error from -87 to 43 is mapped from -1 to 1**/
-    //Mapped = map(Mapped, -87, 44, 1000, 1370);
+    //Mapped = map(Mapped, -87, 44, 1000, 1370);  // NOTE: Mapped was changed to sumPID
     //Mapped = map(Mapped, -87, 43, -1, 1);
-    if (Mapped > 1) {
-      Mapped = 1;
+    if (sumPID > 1) {
+      sumPID = 1;
     } else if (Mapped < -1) {
-      Mapped = -1;
+      sumPID = -1;
     }
 
     /** Input from -1 to 1 mapped to 1100 to 2000 **/
@@ -148,12 +143,11 @@ void loop() {
 }
 
 int Mixer(int mapped) {
-  int Out;
-  Out = map(mapped, -1, 1, 1100, 2000);
+  int Out = map(mapped, -1, 1, 1100, 2000);
   return Out;
 }
 
-double smooth(double data, float filterVal, float smoothedVal){
+double smooth(double data, float filterVal, double lastData){
   /** Makes sure parameters are within range **/
   if (filterVal > 1) {
     filterVal = .99;
@@ -161,9 +155,10 @@ double smooth(double data, float filterVal, float smoothedVal){
     filterVal = 0;
   }
 
-  /** Computes smoothed value **/
-  smoothedVal = (data * (1 - filterVal)) + (smoothedVal * filterVal);
-  return (double) smoothedVal;
+  /** Computes smoothed value by taking into acount**/
+  //TODO: Read up on where this equation came from (makes sense though)
+  double smoothedVal = (data * (1 - filterVal)) + (lastData * filterVal);
+  return smoothedVal;
 }
 
 /** Initial attempt at filtering, kept here for reference, originally went right after unfiltered pitch reading **/
