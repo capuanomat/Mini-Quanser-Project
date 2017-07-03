@@ -10,7 +10,7 @@ MPU6050 mpu;
 
 /** Working variables **/
 unsigned long lastTime;
-double unfilteredPitch, pitch, desiredPitch, lastPitch;
+double unfilteredPitch, pitch, desiredPitch, errorPitch, lastPitch;
 double unfilteredRoll, roll;
 
 /** ADJUSTABLE: Setting a default pitch angle, sampling time in milliseconds, filter value, and  **/
@@ -21,10 +21,12 @@ float filterVal = 0.85;
 /** The PID gains and PID terms **/
 float kp, ki, kd;
 double PTerm, ITerm, DTerm, DTermUnfiltered;
+double sumPID;
 
-double sumPID, Out;
-double errorPitch;
+/** To read serial monitor input angles **/
 char readMonitor[3];  //CHECKON: changed this from "test" which was a keyword
+
+double Out;
 
 void setup() {
   Serial.begin(9600);
