@@ -138,8 +138,8 @@ void loop() {
   //Serial.print(DTerm);
 
   /** Output after mapping...?? **/
-  //Serial.print(" Mapped = ");
-  //Serial.print(Mapped);
+  //Serial.print(" Sum PID Terms = ");
+  //Serial.print(sumPID);
   //Serial.print(" Out = ");
   //Serial.println(Out);
 }
