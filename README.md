@@ -3,6 +3,9 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 
 ### TO DO:
 - Hardware is mostly ok, need to read up on PID to see how I can make it stabilize at 0 degrees for longer (check video)
+- Add integrater wind up
+- Look into MATLAB
+- Arduino Mini
 
 ### DONE:
 - Convert Data from IMU into attitudes and angles
