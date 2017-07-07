@@ -32,3 +32,7 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - MATLAB IMU scanner: https://github.com/ezgode/Arduino_MPU6050
 - PID Library (unused): https://github.com/br3ttb/Arduino-PID-Library
 - Secondary MPU6050 Lib (in use): https://github.com/jarzebski/Arduino-MPU6050
+
+-https://github.com/JonHub/Filters
+-https://playground.arduino.cc/Code/Filters
+-https://en.wikipedia.org/wiki/Integral_windup
