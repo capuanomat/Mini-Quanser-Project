@@ -2,10 +2,10 @@
 Trying to design a mini, 3 degrees-of-freedom control system similar to the Quanser 3 DOF Helicopter model
 
 ### TO DO:
-- Hardware is mostly ok, need to read up on PID to see how I can make it stabilize at 0 degrees for longer (check video)
-- Add integrater wind up
+- Show and present final design prototype
+- Add code for ROll (additional PID stuff
 - Look into MATLAB
-- Arduino Mini
+- Arduino Mini or Adafruit trinket
 
 ### DONE:
 - Convert Data from IMU into attitudes and angles
