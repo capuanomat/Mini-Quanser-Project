@@ -1,0 +1,15 @@
+MPU6050:
+https://grabcad.com/library/mpu-6050-imu-sensor-1
+
+PROP:
+https://grabcad.com/library/5040-propeller-1
+
+MOTOR:
+https://grabcad.com/library/tiger-motor-mn1806-1
+
+BATTERY:
+https://grabcad.com/library/turnigy-nanotech-battery-1800mah-2s-1
+
+POTENTIAL ESC & MOTOR:
+https://grabcad.com/library/exceed-rc-proton-30a-esc-1
+https://grabcad.com/library/exceed-rc-proton-30a-esc-1

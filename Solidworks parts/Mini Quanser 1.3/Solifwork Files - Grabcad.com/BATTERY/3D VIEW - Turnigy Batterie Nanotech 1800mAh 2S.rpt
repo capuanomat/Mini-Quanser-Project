@@ -1,0 +1,68 @@
+*****************************************************************
+      SolidWorks Corporation - IGES Processor Status Report
+*****************************************************************
+=================================================================
+General Information
+=================================================================
+Sending System Product I.D.  : Turnigy - Batterie Nanotech 1800mAh 2S.SLDASM
+Receiving System Product I.D.: Turnigy - Batterie Nanotech 1800mAh 2S.SLDASM
+File Name                    : C:\Users\Guillaume\Desktop\Mes Uploads\Batterie Turnigy Nanotech 1800mAh 2S\3D VIEW - Turnigy Batterie Nanotech 1800mAh 2S.IGS
+Sending System               : SolidWorks 2014
+Preprocessor Version         : SolidWorks 2014
+File Creation Date           : 150823.035240
+Model Creation Date          : 150823.035240
+Units                        : MM
+Model Space Scale            : 1
+Author                       : Guillaume
+Organization                 : 
+
+
+=================================================================
+Entity Processing Information
+=================================================================
+
+
+=================================================================
+Precision analysis of IGES file:
+=================================================================
+  Most prevalent number of significant digits:              11
+  Highest number of significant digits:                     11
+  Average number of significant digits:                10.5791
+  Maximum distance to origin:                          77.7486
+  Minimum distance to origin:                          68.4554
+  Effective number of significant digits:               9.8032
+
+
+=================================================================
+Entity Summary
+=================================================================
+-----------------------------------------------------------------
+Type Name                                         Count Converted
+---- ----                                         ----- ---------
+100  Arc                                            764       764
+102  Composite curve                               1298      1298
+110  Line                                          2278      2278
+120  Surface of revolution                          129       129
+124  Transformation matrix                          598       598
+126  Rational B-spline curve                       3848      3848
+128  Rational B-spline surface                      493       493
+142  Curve on a parametric surface                  649       649
+144  Trimmed parametric surface                     622       622
+308  Subfigure definition                            10        10
+314  Color definition                               548       548
+408  Singular subfigure instance                     11        11
+_________________________________________________________________
+
+
+=================================================================
+Result Summary
+=================================================================
+SolidWorks Feature Type                Count
+-----------------------                -----
+Solid feature(s)                       12
+Surface feature(s)                     0
+Curve/Sketch feature(s)                0
+--------------------------------------------
+Start time: Friday, July 07, 2017 22:41:57
+Finish time: Friday, July 07, 2017 22:42:03
+Processing time: 0 days, 00 hours, 00 mins, 06 secs
