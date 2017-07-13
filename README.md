@@ -2,8 +2,10 @@
 Trying to design a mini, 3 degrees-of-freedom control system similar to the Quanser 3 DOF Helicopter model
 
 ### TO DO:
-- Show and present final design prototype
-- Add code for ROll (additional PID stuff
+- Finish printing parts
+- Assemble version 1.3
+- Add angular accelerations between angles and output
+- Add code for Roll (additional PID stuff)
 - Look into MATLAB
 - Arduino Mini or Adafruit trinket
 
@@ -16,7 +18,7 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - (28/06) Redesign and print CAD structure to test 1 degree of freedom: Pitch
 - (29/06) Assemble printed parts and try basic testing with BE1306-3100KV motor
 - (30/06) Added IMU to frame, finalized connections, mapped controlOutput, managed to make it hold ~horizontal for a few seconds
-
+- (03/07 Week) Implemented PID, filter, and everything else to make model stabilize with 1 motor. Started working on version 1.3 for roll.
 
 ## Needed Hardware Design Improvements (After 2.0)
 - Increase spacing between motor arm and ball bearing frame to let wires fit through without adding friction (or use counterweight arm)
