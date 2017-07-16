@@ -1,0 +1,7 @@
+- Where to place ESCs
+
+- Preventing roll piece from flying off
+
+- Using pin to fix roll vs. additional back piece
+
+- Adding hinge to prevent battery from falling out or are wires ok?
