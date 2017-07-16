@@ -2,8 +2,7 @@
 Trying to design a mini, 3 degrees-of-freedom control system similar to the Quanser 3 DOF Helicopter model
 
 ### TO DO:
-- Finish printing parts
-- Assemble version 1.3
+- Finalize CAD stuff (for some reason Pablo thinks the hardware should be **completely** finished (to the finest measurements) before I re-print/assemble it and write more of the code, which is a clear violation of several Agile development principles, notably number 3 and 7, since at this point in time, there is no version of the software that works with the hardware that's been developed over the past two weeks.)
 - Add angular accelerations between angles and output
 - Add code for Roll (additional PID stuff)
 - Look into MATLAB
@@ -19,13 +18,12 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - (29/06) Assemble printed parts and try basic testing with BE1306-3100KV motor
 - (30/06) Added IMU to frame, finalized connections, mapped controlOutput, managed to make it hold ~horizontal for a few seconds
 - (03/07 Week) Implemented PID, filter, and everything else to make model stabilize with 1 motor. Started working on version 1.3 for roll.
+-(10/07 Week) Heavily modified version 1.3, three iterations (Designs 1, 2, and 3) can be found atm in Solidworks Parts directory
 
-## Needed Hardware Design Improvements (After 2.0)
-- Increase spacing between motor arm and ball bearing frame to let wires fit through without adding friction (or use counterweight arm)
-- Include slit in motor arm to insert IMU
-- Include small hole/dent between screw holes on motor mount to fit middle masher and nail thing (what you soldered into 3D print)
-- Increase spacing between ball bearing mount arms to fit the motor arm more easily (adjust motor arm spacing as needed)
-- Design second motor mount for two motors to test roll
+## Needed Hardware Design Improvements (For 1.3)
+- Create the yaw control pieces
+- Figure out how to add wiring and do it
+- Ask Pablo to look over and decide on those items in txt document
 
 ## References
 - IMU Tutorial 1: https://diyhacking.com/arduino-mpu-6050-imu-sensor-tutorial/
