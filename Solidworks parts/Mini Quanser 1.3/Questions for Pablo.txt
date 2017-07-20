@@ -1,7 +1,9 @@
-- Where to place ESCs
+- Where to place ESCs (ON THE ARM)
 
-- Preventing roll piece from flying off
+- Preventing roll piece from flying off (LITTLE ARM SHOULD BE A CLIP)
 
-- Using pin to fix roll vs. additional back piece
+- Using pin to fix roll vs. additional back piece (USE A PIN BUT KNOW THE EXACT SIZE)
 
-- Adding hinge to prevent battery from falling out or are wires ok?
+- Adding hinge to prevent battery from falling out or are wires ok? (NOT NECESSARY BUT MAKE WEIGHTS ADJUSTABLE)
+
+- REDESIGN THE PIECE THAT HOLDS THE ARM SO 
