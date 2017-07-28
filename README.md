@@ -18,8 +18,8 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - (29/06) Assemble printed parts and try basic testing with BE1306-3100KV motor
 - (30/06) Added IMU to frame, finalized connections, mapped controlOutput, managed to make it hold ~horizontal for a few seconds
 - (03/07 Week) Implemented PID, filter, and everything else to make model stabilize with 1 motor. Started working on version 1.3 for roll.
--(10/07 Week) Heavily modified version 1.3, three iterations (Designs 1, 2, and 3) can be found atm in Solidworks Parts directory
--(17/07 Week) Finalized version 1.3 Design 3 which is the final hardware version ready for software testing of roll, pitch, and yaw. Also ready for testing with Arduino Mini instead of Arduino
+- (10/07 Week) Heavily modified version 1.3, three iterations (Designs 1, 2, and 3) can be found atm in Solidworks Parts directory
+- (17/07 Week) Finalized version 1.3 Design 3 which is the final hardware version ready for software testing of roll, pitch, and yaw. Also ready for testing with Arduino Mini instead of Arduino
 
 ## Needed Hardware Design Improvements (For 1.3)
 - Figure out how to add wiring to CAD Files
