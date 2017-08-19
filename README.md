@@ -1,7 +1,7 @@
 # Mini-Quanser-Project
 Trying to design a mini, 3 degrees-of-freedom control system similar to the Quanser 3 DOF Helicopter model
 
-![Alt text](Images/RENDERED.jpg?raw=true "Optional Title")
+![rendered](https://user-images.githubusercontent.com/19838367/29482997-bfe6d6ee-84df-11e7-863a-efeb748eb6a0.JPG)
 
 ### TO DO:
 - Finalize CAD stuff (for some reason Pablo thinks the hardware should be **completely** finished (to the finest measurements) before I re-print/assemble it and write more of the code, which is a clear violation of several Agile development principles, notably number 3 and 7, since at this point in time, there is no version of the software that works with the hardware that's been developed over the past two weeks.)
