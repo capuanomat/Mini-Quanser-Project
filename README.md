@@ -4,11 +4,11 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 ![rendered](https://user-images.githubusercontent.com/19838367/29482997-bfe6d6ee-84df-11e7-863a-efeb748eb6a0.JPG)
 
 ### TO DO:
-- CAD files are essentially finalized, need to print and write code for second motor
-- Add angular accelerations between angles and output
-- Add code for Roll (additional PID stuff)
+- CAD files are essentially finalized for two motor design, need to print then and write code for the second motor, test it, etc.
+- Add angular acceleration measurements to controls code between angle measurements/adjustments and output
+- Add code for Roll (additional PID stuff, might be done at the same time as first point)
 - Look into operating the device entirely from MATLAB, must interact corerectly with Arduino Mini
-- Arduino Mini or Adafruit trinket
+- Decide between using Arduino Mini or Adafruit trinket for final product (custom board would be best though but ok for now)
 - Look into how you'll produce several dozen of these beauties (some thermoplastic polymer maybe? Polystyrene? Try aluminum first, needs   to look like an apple product)
 
 ### DONE:
