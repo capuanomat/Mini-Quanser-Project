@@ -10,6 +10,7 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - Look into operating the device entirely from MATLAB, must interact corerectly with Arduino Mini
 - Decide between using Arduino Mini or Adafruit trinket for final product (custom board would be best though but ok for now)
 - Look into how you'll produce several dozen of these beauties (some thermoplastic polymer maybe? Polystyrene? Try aluminum first, needs   to look like an apple product)
+  - The above might work with Injection Moulding! Look into this: https://en.wikipedia.org/wiki/Injection_moulding
 
 ### DONE:
 - Convert Data from IMU into attitudes and angles
