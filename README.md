@@ -8,6 +8,7 @@ Trying to design a mini, 3 degrees-of-freedom control system similar to the Quan
 - Add angular acceleration measurements to controls code between angle measurements/adjustments and output
 - Add code for Roll (additional PID stuff, might be done at the same time as first point)
 - Look into operating the device entirely from MATLAB, must interact corerectly with Arduino Mini
+- It might be better to use regular AA batteries that you side into the back of the motor arm, rather than a battery pack. Would be a lot more convenient and classy
 - Decide between using Arduino Mini or Adafruit trinket for final product (custom board would be best though but ok for now)
 - Look into how you'll produce several dozen of these beauties (some thermoplastic polymer maybe? Polystyrene? Try aluminum first, needs   to look like an apple product)
   - The above might work with Injection Moulding! Look into this: https://en.wikipedia.org/wiki/Injection_moulding
